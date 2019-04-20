@@ -1,0 +1,31 @@
+<div>
+    Cliquez sur une lettre :
+    {{#each vipLettre}}
+        <a href="/repertoire/{{this.vip_lettre}}">{{this.vip_lettre}}</a>
+    {{/each}}
+</div>
+<br>
+<br>
+<div>
+    <div class="box">
+        {{#each vip}}
+            <div>
+                <img src="/images/vip/{{this.PHOTO_ADRESSE}}" height="200"/>
+                <br>
+                <a href="/repertoire/vip/{{this.VIP_NUMERO}}">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</a>
+            </div>
+        {{/each}}
+    </div>
+    <style>
+        .box {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            float: left;
+            margin: auto;
+        }
+        /*.box :first-child {*/
+        /*    align-self: center;*/
+        /*}*/
+    </style>
+</div>

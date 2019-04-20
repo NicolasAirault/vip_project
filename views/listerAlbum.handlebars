@@ -1,0 +1,157 @@
+<script>
+    let i = 0;
+    let indexPhoto = 0;
+    function affichageImage(){
+        for(x=0; x<maxVip; x++){
+            if(x < i*16 || x >= (i+1)*16){
+                document.getElementById("img"+x).style.display = "none";
+            }
+            else if(x >=16*2 || x<(i+1)*16){
+                document.getElementById("img"+x).style.display = "inline-block";
+            }
+        }
+    }
+    function photo_precedente(){
+        if(indexPhoto>0){
+            indexPhoto -=1;
+            refreshPhoto();
+        }
+    }
+    function photo_suivante(){
+        if(indexPhoto<posPhoto-1){
+            indexPhoto +=1;
+            refreshPhoto();
+        }
+    }
+    function refreshPhoto(){
+
+        for(x=0; x<posPhoto; x++){
+            console.log(indexPhoto);
+            if(x!=indexPhoto){
+                document.getElementById("nb_photo"+x).style.display = "none";
+            }
+            else{
+                document.getElementById("nb_photo"+x).style.display = "inline-block";
+            }
+        }
+    }
+    function doThings(action){
+        if(action == "next"){
+            if(i<max-1){
+                i += 1;
+                document.getElementById("i").value = i;
+                affichageImage();
+            }
+        }
+        if(action == "previous"){
+            if(i>0){
+                i -= 1;
+                document.getElementById("i").value = i;
+                affichageImage();
+            }
+        }
+        if(action == "debut"){
+            if(i!=0){
+                i = 0;
+                document.getElementById("i").value = i;
+                affichageImage();
+            }
+        }
+        if(action == "fin"){
+            if(i!=max-1){
+                i = max-1;
+                document.getElementById("i").value = i;
+                affichageImage();
+            }
+        }
+    }
+</script>
+
+<div class="GESTION_ALBUM">
+    <script>
+        var j = 0;
+    </script>
+    {{#each listePhotos}}
+        <div id="img" class="dispatchPhotoVip">
+            <a href="/album/{{this.VIP_NUMERO}}">
+                <img src="/images/vip/{{this.PHOTO_ADRESSE}}" alt="{{this.VIP_PRENOM}} {{this.VIP_NOM}}" />
+                <script>
+                    document.getElementById("img").id += j.toString();
+                    j += 1;
+                </script>
+            </a>
+        </div>
+    {{/each}}
+    <div is="albumFooter">
+        <div id="pre">
+            <input class="BTN_STYLE" id="get_start" onclick="doThings('debut')" type="button" value="Début" />
+            <input class="BTN_STYLE" id="get_prec" onclick="doThings('previous')" type="button" value="Précédent" />
+        </div>
+        <div id="past">
+            <input class="BTN_STYLE" id="get_next" onclick="doThings('next')" type="button" value="Suivant" />
+            <input class="BTN_STYLE" id="get_fin" onclick="doThings('fin')" type="button" value="Fin" />
+        </div>
+    </div>
+</div>
+
+<div id="vipAlbum" class="album">
+    <script>
+        var posPhoto = 0;
+    </script>
+    <p>Cliquez sur un VIP pour afficher son album</p>
+
+    <div class="backAlbum">
+        <button id="BACK_ALBUM">&#10094;</button>
+    </div>
+    {{#each listePhotosVip}}
+        <div id="nb_photo">
+            <div id="photo">
+                <div class="nom">
+                    <h2> {{this.VIP_PRENOM}} {{this.VIP_NOM}} </h2>
+                </div>
+                <div class="ALBUM_PHOTO">
+                    <img src="/images/vip/{{this.PHOTO_ADRESSE}}" alt="{{this.VIP_PRENOM}} {{this.VIP_NOM}}" width="150" height="200" />
+                </div>
+                <script>
+                    document.getElementById("nb_photo").id += posPhoto.toString();
+                    posPhoto += 1;
+                </script>
+            </div>
+        </div>
+    {{/each}}
+    <div class="nextAlbum">
+        <button id="NEXT_ALBUM">&#10095;</button>
+    </div>
+</div>
+
+<input id="i" type="hidden" value="" />
+{{#each listePhotos}}
+    <input id="nbVips" type="hidden" class="nbVips" value="{{this.VIP_NUMERO}}" />
+{{/each}}
+
+<script>
+    let maxVip = document.getElementById("nbVips").value;
+    max = maxVip/16;
+    max = Math.ceil(max);
+
+    window.onload = function(){
+        let backElement = document.getElementById("BACK_ALBUM");
+        if(backElement!=null){
+            backElement.addEventListener("click", photo_precedente);
+            document.getElementById("NEXT_ALBUM").addEventListener("click", photo_suivante);
+            refreshPhoto();
+        }
+        affichageImage();
+    };
+    //FONCTION PASSEE UNIQUEMENT SI LA PAGE EST CHARGEE
+    document.onreadystatechange = () => {
+        if (document.readyState === 'complete') {
+            maxVip = nbVips.length;
+            max = maxVip/16;
+            max = Math.ceil(max);
+        }
+    };
+</script>
+
+<script src="../controllers/AlbumController.js">
+</script>

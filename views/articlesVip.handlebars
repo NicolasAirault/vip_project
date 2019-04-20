@@ -1,0 +1,31 @@
+<div>
+    <div id="bloc_vip_article" class="articleDroite">
+        <div class="vipNoire">
+            <img id="VIP_tete" src="/images/vips.png" alt="VIPs" />
+        </div>
+        <br>
+        {{#each VIP}}
+            <a class="textVip" href="/articles/{{this.VIP_NUMERO}}">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</a>
+            <br>
+        {{/each}}
+    </div>
+
+    <div id="bloc_article" class="articleGauche">
+        {{#if articles}}
+            {{#each articles}}
+                <a class="textVip" id="nom_vip_article" href="/repertoire/vip/{{this.VIP_NUMERO}}">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</a>
+                <br>
+                <br>
+                <label> </label> {{this.ARTICLE_TITRE}}
+                <br>
+                <p id="resume_article">{{this.ARTICLE_RESUME}}</p>
+                <label>Ajouté le : </label> [{{formatDate this.ARTICLE_DATE_INSERT 'D MMMM YYYY'}}]
+                <br>
+                <a id="link_fiche" href="">Voir sa fiche</a>
+            {{/each}}
+        {{else}}
+            <p>Choisissez un VIP pour voir les articles les concernants</p>
+        {{/if}}
+    </div>
+
+</div>
