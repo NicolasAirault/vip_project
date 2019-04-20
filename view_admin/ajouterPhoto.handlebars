@@ -1,0 +1,38 @@
+<h1>Ajout d'une photo</h1>
+<br>
+<div id="bloc_vip_article" class="articleDroite">
+    <p class="vipNoire" style="color: white; font-size: 50px">Photos</p>
+    <div>
+        <h3><a href="/ajouterPhoto">+ Ajouter</a></h3>
+        <h3><a href="/supprimerPhoto">x Supprimer</a></h3>
+    </div>
+</div>
+<br>
+<div id="ajoutphoto" class="myDiv">
+    <form method="post" action="/ajouterPhoto/add" enctype="multipart/form-data">
+        <div id="saisie_nomVip">
+            <label>Nom du vip : </label>
+            <select name="numVip">
+                    <option value="default"></option>
+                {{#each vips}}
+                    <option value="{{this.VIP_NUMERO}} {{this.photo_num}}">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <br>
+        <div id="saisie_nomPhoto">
+            <label>Titre : </label> <input type="text" placeholder="Titre de photo" name="titrePhoto">
+        </div>
+        <br>
+        <div id="saisie_Photo">
+            <label>Adresse de la photo : </label> <input type="file" name="photoAdd">
+        </div>
+        <br>
+        <div id="saisie_commPhoto">
+            <label>Un petit commentaire ? </label><textarea type="textarea" name="commentPhoto" rows="2" cols="15"></textarea>
+        </div>
+        <br>
+        <input type="submit" value="Envoyer">
+        <input type="reset" value="Annuler">
+    </form>
+</div>

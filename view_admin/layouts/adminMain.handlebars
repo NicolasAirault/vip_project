@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" type="image/png" href="/css/etoile.ico" sizes="16x16"/>
+        <link rel="stylesheet" href="/css/structure.css" />
+        <link rel="stylesheet" href="/css/lightbox.css"/>
+        <title> {{title}}</title>
+    </head>
+    <body class="monBody">
+        <div id="container">
+            <div id="header">
+                <div class="baniere"><img src="/images/sixvoix.png" alt="SIXVOIX l'encyclopédie des stars" /> </div>
+            </div>
+            {{#if session.logged}}
+                <div class="block_connexion">
+                    <label>Bonjour {{session.admin}}</label> <a href="/administration">Deconnexion</a>
+                </div>
+                <div class="menu_haut">
+                    <ul>
+                        <li><a href="/home">ACCUEIL</a></li>
+                        <li class="traitVertical"><a href="/vips">VIPS</a></li>
+                        <li class="traitVertical"><a href="/photos">PHOTOS</a></li>
+                    </ul>
+                </div>
+            {{/if}}
+
+            <div id="contenu">
+                <br/>
+                <br/>
+                {{{body}}}
+            </div>
+            <div id="footer">
+                L'encyclopédie des stars depuis février 2017 (en NodeJS)
+                <br />
+                © IUT du Limousin DUT Informatique année 2
+                <br />
+                Appllication réalisée par Nicolas Airault
+                <br />
+                <img src="/images/nodejs.png" id= "LogoNode" alt="Logo NodeJs" title="Logo Node.JS" />
+            </div>
+        </div>
+        <script src="../../public/js/functions.js"></script>
+        <script src="../../public/js/jquery.js"></script>
+        <script src="../../public/js/lightbox.js"></script>
+
+    </body>
+</html>

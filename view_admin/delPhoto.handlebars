@@ -1,0 +1,47 @@
+<h1>Supprimer une photo</h1>
+
+<div id="bloc_vip_article" class="articleDroite">
+    <div>
+        <h1>Photos</h1>
+        <h3><a href="/ajouterPhoto">+ Ajouter</a></h3>
+        <h3><a href="/supprimerPhoto">x Supprimer</a></h3>
+    </div>
+</div>
+<br>
+<div id="delphoto">
+    {{#if photos}}
+        <form method="post" action="/supprimerPhoto/del/conf">
+            <label>Nom de la photo à supprimer : </label>
+            <select name="nomPhoto">
+                {{#each photos}}
+                    <option value="{{this.PHOTO_SUJET}}">{{this.PHOTO_SUJET}}</option>
+                {{/each}}
+            </select>
+            <br>
+            <br>
+            <input type="text" name="idvip" value="{{photos.0.VIP_NUMERO}}" style="display: none">
+            <input type="submit" value="Valider">
+        </form>
+    {{else}}
+        <h2> Il n'y a pas de photos ! </h2>
+    {{/if}}
+</div>
+<style>
+    form {
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    label, input, textarea {
+        display: inline-block;
+    }
+
+    label, a{
+        width: 30%;
+        text-align: left;
+    }
+
+    label + input {
+        width: 30%;
+    }
+</style>

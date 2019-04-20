@@ -1,0 +1,25 @@
+<h1>Supprimer une photo</h1>
+
+<div id="bloc_vip_article" class="articleDroite">
+    <p class="vipNoire" style="color: white; font-size: 50px">Photos</p>
+    <div>
+        <h3><a href="/ajouterPhoto">+ Ajouter</a></h3>
+        <h3><a href="/supprimerPhoto">x Supprimer</a></h3>
+    </div>
+</div>
+<br>
+<div id="supprimerphoto" style="width: 75%">
+    <form method="post" action="/supprimerPhoto/del">
+        <h1>Nom du vip : </h1>
+        <select name="numVip" onchange="">
+            <option value="default"></option>
+            {{#each vips}}
+                <option value="{{this.VIP_NUMERO}}">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Valider">
+        <input type="reset" value="Annuler">
+    </form>
+</div>

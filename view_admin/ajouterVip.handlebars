@@ -1,0 +1,180 @@
+<h1>Ajout Vips</h1>
+
+<div id="bloc_vip_article" class="articleDroite">
+    <p class="vipNoire" style="color: white; font-size: 50px">VIP</p>
+    <div>
+        <h3><a href="/ajouterVip">+ Ajouter</a></h3>
+        <h3><a href="/modifierVip"># Modifier</a></h3>
+        <h3><a href="/supprimerVip">* Supprimer</a></h3>
+    </div>
+</div>
+<br>
+<form method="post" action="/ajouterVip/conf" enctype="multipart/form-data">
+    <div id="saisie_nom">
+        <label>Nom* : </label> <input type="text" placeholder="Nom" name="nomVip">
+    </div>
+    <br>
+    <div id="saisie_prenom">
+        <label>Prénom* : </label> <input type="text" placeholder="Prenom" name="prenomVip">
+    </div>
+    <br>
+    <div id="saisie_sexe">
+        <label>Sexe : </label>
+        <select name="sexeVip">
+            <option value="M">Masculin</option>
+            <option value="F">Féminin</option>
+        </select>
+    </div>
+    <br>
+    <div id="saisie_naiss">
+        <label>Date de naissance : </label> <input type="date" name="naissanceVip">
+    </div>
+    <br>
+    <div id="saisie_natio">
+        <label>Nationalité : </label>
+        <select name="natioVip">
+            {{#each natio}}
+                <option value="{{this.NATIONALITE_NUMERO}}">{{this.NATIONALITE_NOM}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+    <div id="saisie_comm">
+        <label>Commentaire : </label><textarea name="commentVip" rows="5" cols="25"> </textarea>
+    </div>
+    <div id="saisie_img">
+        <label>Sélectionner l'image : </label> <input type="file" name="imgVip">
+    </div>
+    <br>
+    <div id="saisie_pro">
+        <label>Profession(s) : </label>
+        <br><br>
+        <input id="checkChanteur" name="pro_chanteur" type="checkbox" value="check" onchange="refreshMetier()"> Chanteur
+        <input id="checkActeur" name="pro_acteur" type="checkbox" value="check" onchange="refreshMetier()"> Acteur
+        <input id="checkCouturier" name="pro_couturier" type="checkbox" value="check" onchange="refreshMetier()"> Couturier
+        <input id="checkMannequin" name="pro_mannequin" type="checkbox" value="check" onchange="refreshMetier()"> Mannequin
+        <input id="checkRealisateur" name="pro_realisateur" type="checkbox" value="check" onchange="refreshMetier()"> Réalisateur
+    </div>
+    <br>
+    <input name="idVip" type="number" value="{{idVip.0.AUTO_INCREMENT}}" style="display: none">
+    <input name="idAlbum" type="number" value="{{idAlbum.0.AUTO_INCREMENT}}" style="display: none">
+    <br>
+    <div id="block_chanteur">
+        <label>Specialite musicale : </label>
+        <input type="text" name="specialite" placeholder="Saisir la specialite">
+        <br>
+        <label>Album : </label>
+        <input type="text" name="album" placeholder="Saisir le nom de l'album">
+        <br>
+        <label>Maison de disque : </label>
+        <select name="idMaisonDisque">
+            {{#each maisonDisque}}
+                <option value="{{this.MAISONDISQUE_NUMERO}}">{{this.MAISONDISQUE_NOM}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+    <div id="block_acteur">
+        <label>Date de début de carrière : </label>
+        <input name="dateDebutActeur" type="date">
+        <br>
+        <label>Film(s) : </label>
+        <select name="nomFilm">
+            {{#each nomFilm1}}
+                <option value="{{this.film_NUMERO}}">{{this.FILM_TITRE}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label>Role : </label>
+        <input name="roleVip" type="text" placeholder="Saisir le role joué">
+    </div>
+    <br>
+    <div id="block_couturier">
+        <label>Lieu du défilé : </label>
+        <input name="nomDefile" type="text" placeholder="Saisir le lieu du defilé">
+        <br>
+        <label>Date du défilé : </label>
+        <input name="dateDefile" type="date">
+    </div>
+    <br>
+    <div id="block_mannequin">
+        <label>Taille du mannequin : </label>
+        <input name="tailleVip" type="number" min="0" max="250">
+        <br>
+        <label>Nom de l'agence : </label>
+        <select name="nomAgence">
+            {{#each agenceMannequin}}
+                <option value="{{this.AGENCE_NUMERO}}">{{this.AGENCE_NOM}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label>A défilé à : </label>
+        <select name="defileA">
+            {{#each defile}}
+                <option value="{{this.DEFILE_NUMERO}}">{{this.DEFILE_LIEU}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+    <div id="block_realisateur" >
+        <label>Film réalisé : </label>
+        <select name="nomFilmReal">
+            {{#each nomFilm2}}
+                <option value="{{this.film_NUMERO}}">{{this.FILM_TITRE}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+
+    <input type="submit" value="Valider">
+    <input type="reset" value="Annuler">
+</form>
+<style>
+    form {
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    label, input, textarea {
+        display: inline-block;
+    }
+
+    label, a{
+        width: 30%;
+        text-align: left;
+    }
+
+    label + input {
+        width: 30%;
+    }
+</style>
+<script>
+    refreshMetier();
+    function refreshMetier(){
+        if(document.getElementById('checkChanteur').checked){
+            document.getElementById('block_chanteur').style.display = '';
+        }else{
+            document.getElementById('block_chanteur').style.display = 'none';
+        }
+        if(document.getElementById('checkActeur').checked){
+            document.getElementById('block_acteur').style.display = '';
+        }else{
+            document.getElementById('block_acteur').style.display = 'none';
+        }
+        if(document.getElementById('checkCouturier').checked){
+            document.getElementById('block_couturier').style.display = '';
+        }else{
+            document.getElementById('block_couturier').style.display = 'none';
+        }
+        if(document.getElementById('checkMannequin').checked){
+            document.getElementById('block_mannequin').style.display = '';
+        }else{
+            document.getElementById('block_mannequin').style.display = 'none';
+        }
+        if(document.getElementById('checkRealisateur').checked){
+            document.getElementById('block_realisateur').style.display = '';
+        }else{
+            document.getElementById('block_realisateur').style.display = 'none';
+        }
+    }
+</script>
