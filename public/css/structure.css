@@ -1,0 +1,309 @@
+body {
+    font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
+    background-image:-webkit-linear-gradient(#9f0909, #4e0000);
+    background-image:-o-linear-gradient(#9f0909, #4e0000);
+    background-image:linear-gradient(#9f0909, #4e0000);
+    background-size: 1rem 200rem;
+    font-size:0.8em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #000000;
+}
+.monBody #container {
+    width: 1300px;
+    margin: 0 auto;
+    background:#ffffff;
+}
+.monBody #header {
+    height:140px;
+    background-color:#000;
+    color:#fff;
+}
+
+.menu_haut {
+    background-color:#000;
+    color:#fff;
+    margin-top:-13px;
+    width:100%;
+}
+
+.menu_haut ul {
+    width:100%;
+    text-align:center;
+    height:30px;
+    margin-left:-50px;
+    margin-right:-50px;
+}
+
+.menu_haut li {
+    text-decoration:none;
+    font-weight:bold;
+    display:inline;
+    font-size:14px;
+    padding:10px 10px 10px 10px;
+    color:#fff;
+}
+
+.menu_haut li a {
+    color: #fff;
+    text-decoration: none;
+    display: inline;
+    height: 100%;
+    border: 0 none;
+}
+
+.menu_haut li a:hover {
+    color:#000;
+    background:#eee;
+}
+
+.block_connexion{
+    background-color:#000;
+    color:#fff;
+    margin-top:-13px;
+    width:100%;
+    border-style:solid;
+
+    border-color:white;
+
+}
+
+.block_connexion a{
+    color: #fff;
+    text-decoration: none;
+    display: inline;
+    height: 100%;
+    border: 0 none;
+}
+
+.monBody #contenu {
+    padding:20px;
+    overflow: auto;
+}
+.monBody #footer {
+    padding: 0 10px;
+    font-size:0.8em;
+    text-align:center;
+    height:150px;
+    background:url(/image/footer.jpg) no-repeat;
+}
+.baniere{float:left;
+    margin-top:20px;
+    margin-left:5px;
+    border:none;}
+.baniere img{
+    border:none;
+}
+
+#LogoNode {
+    max-height: 20%;
+    max-width: 20%;
+}
+
+a  {
+    text-decoration:none;
+    color:#0072ff;
+}
+
+.traitVertical {
+    border-left: 1px white solid;
+}
+
+#img_profil{
+    float: left;
+    margin-right: 10px;
+}
+
+#bloc_infos{
+    text-align: left;
+}
+
+#bloc_vip_article{
+    float: right;
+    border-style: none groove none groove;
+}
+
+#VIP_tete{
+    background-color: black;
+    padding-left:25px;
+    padding-right:25px;
+}
+
+#bloc_article{
+    border-style: solid;
+}
+
+#resume_article{
+    text-align: left;
+    padding-left: 15px;
+}
+
+#nom_vip_article{
+    float: left;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.previous,
+.nextimg {
+    cursor: pointer;
+    position: inherit;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: black;
+}
+.articleDroite{
+    width : 20%;
+    border-radius: 25px;
+    border-color: black;
+}
+.articleGauche{
+    width : 79%;
+    border-radius: 15px 15px 0px 0px;
+}
+.textVip{
+    color:Black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.vipNoire{
+    background-color: black;
+    border-radius: 15px 15px 0px 0px;
+}
+
+
+/*ALBUM PHOTO*/
+.GESTION_ALBUM{
+    border: grey solid 2px;
+    border-radius: 5%;
+    width: 350px;
+    padding: 10px;
+    float: left;
+}
+.dispatchPhotoVip{
+    display: inline-block;
+}
+.dispatchPhotoVip img{
+    width: 50px;
+    height: 75px;
+}
+#pre, #past{
+    display: inline-block;
+}
+.backAlbum, .ALBUM_PHOTO, .nextAlbum{
+    display: inline-block;
+    vertical-align: middle;
+}
+.backAlbum{
+    margin-right: 20px;
+}
+.nextAlbum{
+    margin-left: 20px;
+}
+.GESTION_ALBUM, .album{
+    display: inline-block;
+    vertical-align: middle;
+}
+.album, #vipAlbum{
+    padding-left: 100px;
+    padding-right: 100px;
+    float: right;
+}
+
+.tooltip
+{
+    text-decoration:none;
+    position:relative;
+}
+
+
+.tooltip span
+{
+    display:none;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    color:black;
+    background:white;
+}
+
+
+.tooltip span img
+{
+    float:left;
+    margin:0px 8px 8px 0;
+}
+
+
+.tooltip:hover span
+{
+    background: black;
+    color: white;
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:10000;
+    width:500px;
+    max-width:10000px;
+    min-height:50px;
+    border:1px solid black;
+    margin-top:12px;
+    margin-left:32px;
+    overflow:hidden;
+    padding:8px;
+}
+
+input[type=text], input[type=date],input[type=password], select, button, .BTN_STYLE{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit], input[type=reset], input[type=file]{
+    width: 70%;
+    background-color: #133452;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover, input[type=reset]:hover, input[type=file]:hover {
+    background-color: #000000;
+}
+
+.myDiv {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    display: inline-block;
+    width: 70%;
+    float: left;
+}
