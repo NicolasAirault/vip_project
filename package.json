@@ -1,0 +1,26 @@
+{
+  "name": "VIPNodeJS",
+  "description": "Un exemple Express.js application utilisant MVC Template",
+  "private": true,
+  "version": "0.1.4",
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "cookie-parser": ">=1.4",
+    "crypto": "*",
+    "cryptr": "^4.0.2",
+    "express": "^4.16.4",
+    "express-handlebars": "*",
+    "express-session": ">1.12",
+    "formidable": "^1.2.1",
+    "fs-extra": "^7.0.1",
+    "moment": "^2.24.0",
+    "mysql": "2.16.0",
+    "path": "^0.12.7",
+    "string": ">3.0",
+    "unidecode": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
